@@ -4,9 +4,13 @@
 titleNeedle   := "Expediente Digital"
 checkInterval := 400  ; ms
 
+; guarda janelas já tratadas (para não "puxar de volta")
+movedWindows := Map()
+
 SetTimer(WatchED, checkInterval)
 
 WatchED() {
+    global movedWindows, titleNeedle
     portraitMon := GetPortraitMonitor()
     if (portraitMon = 0)
         return
@@ -14,8 +18,18 @@ WatchED() {
     ; Área útil do monitor em retrato (desconta barra de tarefas)
     MonitorGetWorkArea(portraitMon, &waLeft, &waTop, &waRight, &waBottom)
 
+    ; remove entradas de janelas que não existem mais
+    for hwnd, _ in movedWindows {
+        if !WinExist("ahk_id " hwnd)
+            movedWindows.Delete(hwnd)
+    }
+
     hwndList := WinGetList(titleNeedle)
     for hwnd in hwndList {
+
+        ; já tratada, não move novamente
+        if movedWindows.Has(hwnd)
+            continue
 
         ; ignora minimizadas
         if (WinGetMinMax(hwnd) = -1)
@@ -34,6 +48,8 @@ WatchED() {
         ; empurra para dentro do monitor retrato e maximiza
         WinMove(waLeft, waTop, 800, 600, hwnd)
         WinMaximize(hwnd)
+
+        movedWindows[hwnd] := true
     }
 }
 

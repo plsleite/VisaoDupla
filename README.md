@@ -27,6 +27,7 @@ A solução não altera o sistema web, não interfere no navegador e não exige 
    - identifica o monitor em retrato;
    - move a janela para esse monitor;
    - maximiza automaticamente.
+4. Após a primeira movimentação, o usuário pode reposicionar a janela manualmente sem que o programa a mova novamente.
 
 ## Tecnologias utilizadas
 - AutoHotkey v2
