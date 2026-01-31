@@ -32,7 +32,8 @@ WatchED() {
             continue
 
         ; ignora minimizadas
-        if (WinGetMinMax(hwnd) = -1)
+        winState := WinGetMinMax(hwnd)
+        if (winState = -1)
             continue
 
         ; filtra por navegador
@@ -45,8 +46,15 @@ WatchED() {
         if (x >= waLeft && x <= waRight && y >= waTop && y <= waBottom)
             continue
 
+        ; se estiver maximizada, restaura antes de mover
+        if (winState = 1) {
+            WinRestore(hwnd)
+            Sleep(80)
+        }
+
         ; empurra para dentro do monitor retrato e maximiza
-        WinMove(waLeft, waTop, 800, 600, hwnd)
+        WinMove(waLeft, waTop, , , hwnd)
+        Sleep(80)
         WinMaximize(hwnd)
 
         movedWindows[hwnd] := true
