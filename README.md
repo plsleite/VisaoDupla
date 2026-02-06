@@ -28,6 +28,7 @@ A solução não altera o sistema web, não interfere no navegador e não exige 
    - move a janela para esse monitor;
    - maximiza automaticamente.
 4. Após a primeira movimentação, o usuário pode reposicionar a janela manualmente sem que o programa a mova novamente.
+5. Se já houver uma janela do “Expediente Digital” no monitor retrato, do mesmo navegador, ela será fechada antes de mover a nova.
 
 ## Tecnologias utilizadas
 - AutoHotkey v2
@@ -67,6 +68,11 @@ Trata-se de um executável portátil, que:
 - O navegador não permite mover abas individualmente.
 - O “Expediente Digital” precisa ser aberto em nova janela (Shift + clique).
 - A solução depende da existência de um monitor em orientação retrato.
+
+## Uso simultâneo de processos
+É possível trabalhar com dois ou mais processos ao mesmo tempo:
+- Antes de abrir o último processo, mova para o monitor em orientação paisagem qualquer janela do “Expediente Digital” que você não deseja fechar.
+- Outra possibilidade é usar dois navegadores diferentes, pois o script fecha apenas a janela do “Expediente Digital” aberta no mesmo navegador.
 
 ## Manutenção
 O código-fonte está disponível neste repositório.
