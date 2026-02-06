@@ -55,7 +55,7 @@ Trata-se de um executável portátil, que:
 
 ## Instalação e remoção
 ### Instalação
-1. Copiar o arquivo `ExpedienteDigital_Retrato_Max.exe` para o computador.
+1. Copiar o arquivo `VisaoDupla0.4.exe` para o computador.
 2. (Opcional) Criar um atalho na pasta de inicialização:
    - Win + R → `shell:startup`
 
